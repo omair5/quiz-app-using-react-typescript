@@ -1,26 +1,25 @@
 import { useEffect } from 'react';
 import './App.css';
-// import store from './store';
-import { Provider } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import FetchCategories from './Services/FetchCategories';
 import QuizForm from './Components/QuizForm';
 
 
 
 function App() {
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function CategoriesFetch() {
-      console.log(await FetchCategories())
+      const response = await FetchCategories()
+      dispatch({ type: 'populate_category_select', payload: response })
     }
     CategoriesFetch()
-  }, [])
+  }, [dispatch])
 
   return (
     <div>
-      {/* <Provider store={store}> */}
       <QuizForm />
-      {/* </Provider> */}
     </div>
   );
 }

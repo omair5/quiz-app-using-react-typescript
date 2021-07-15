@@ -1,5 +1,5 @@
-// import { createStore } from 'redux'
-// import RootReducer from './Reducers'
+import { createStore } from 'redux'
+import combineReducers from './Reducers/index.jsx'
 
-// const store = createStore(RootReducer)
-// export default store
+const store = createStore(combineReducers)
+export default store

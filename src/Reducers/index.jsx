@@ -1,7 +1,9 @@
-// import { combineReducers } from 'redux'
+import { combineReducers } from 'redux'
+import FormCategory from './FormCategory'
 
 
-// export default combineReducers(
-//     {
-
-//     })
+export default combineReducers(
+    {
+        FormCategory
+    }
+)
