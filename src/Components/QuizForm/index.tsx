@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { useSelector, RootStateOrAny } from 'react-redux';
+import FetchQuiz from '../../Services/FetchQuiz';
 
 
 interface categoryItems {
@@ -8,16 +9,22 @@ interface categoryItems {
     name: string
 }
 
+interface difficultyLevelItems {
+    id: number,
+    name: string,
+    value: string
+}
+
 const DifficultyLevel = [
-    { id: 1, name: 'Easy' },
-    { id: 2, name: 'Medium' },
-    { id: 3, name: 'Hard' },
+    { id: 1, name: 'Easy', value: 'easy' },
+    { id: 2, name: 'Medium', value: 'medium' },
+    { id: 3, name: 'Hard', value: 'hard' },
 ]
 
 const QuizForm: React.FC = () => {
 
     const Category_select_options = useSelector((state: RootStateOrAny) => state.FormCategory)
-    const [formFields, setformFields] = useState({ name: '', category: '', difficulty: '' })
+    const [formFields, setformFields] = useState({ name: '', category: 9, difficulty: 'easy' })
 
     const HandleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
         setformFields({ ...formFields, [e.target.name]: e.target.value })
@@ -26,6 +33,12 @@ const QuizForm: React.FC = () => {
     const HandleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(formFields)
+        const QuizFetch = async () => {
+            await FetchQuiz(formFields.category, formFields.difficulty)
+
+        }
+        QuizFetch()
+        setformFields({ name: '', category: 9, difficulty: 'easy' })
     }
 
     return (
@@ -56,6 +69,7 @@ const QuizForm: React.FC = () => {
                         helperText="Please Select Category"
                         variant="outlined"
                         name='category'
+                        placeholder='Enter Your Name'
                     >
                         {
                             Category_select_options.length === 0 ? 'Loading...' :
@@ -82,8 +96,8 @@ const QuizForm: React.FC = () => {
                         variant="outlined"
                         name='difficulty'
                     >
-                        {DifficultyLevel.map((option: categoryItems, index: number) => (
-                            <option key={index} value={option.name}>
+                        {DifficultyLevel.map((option: difficultyLevelItems, index: number) => (
+                            <option key={index} value={option.value}>
                                 {option.name}
                             </option>
                         ))}
