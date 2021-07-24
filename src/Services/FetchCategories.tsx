@@ -8,5 +8,4 @@ async function FetchCategories(): Promise<category[]> {
     const { trivia_categories } = await res.json()
     return trivia_categories
 }
-
 export default FetchCategories;

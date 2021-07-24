@@ -34,7 +34,7 @@ const QuizForm: React.FC = () => {
         e.preventDefault()
         console.log(formFields)
         const QuizFetch = async () => {
-            await FetchQuiz(formFields.category, formFields.difficulty)
+            console.log(await FetchQuiz(formFields.category, formFields.difficulty))
 
         }
         QuizFetch()
