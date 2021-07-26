@@ -3,6 +3,7 @@ import './App.css';
 import { useDispatch } from 'react-redux'
 import FetchCategories from './Services/FetchCategories';
 import QuizForm from './Components/QuizForm';
+import QuizCard from './Components/QuizCard';
 
 
 
@@ -20,6 +21,7 @@ function App() {
   return (
     <div>
       <QuizForm />
+      <QuizCard />
     </div>
   );
 }
