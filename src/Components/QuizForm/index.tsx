@@ -27,7 +27,6 @@ const QuizForm: React.FC = () => {
     const Category_select_options = useSelector((state: RootStateOrAny) => state.FormCategory)
     const [formFields, setformFields] = useState({ name: '', category: 9, difficulty: 'easy' })
 
-
     const HandleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
         setformFields({ ...formFields, [e.target.name]: e.target.value })
     }
@@ -35,6 +34,8 @@ const QuizForm: React.FC = () => {
     const HandleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log(formFields)
+        dispatch({ type: 'hide_quiz_form' })
+        dispatch({ type: 'show_quiz_card' })
         const QuizFetch = async () => {
             const quizdata: QuizCardData[] = await FetchQuiz(formFields.category, formFields.difficulty)
             dispatch({ type: 'set_quiz', payload: quizdata })

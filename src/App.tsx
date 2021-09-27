@@ -1,14 +1,20 @@
 import { useEffect } from 'react';
 import './App.css';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector, RootStateOrAny } from 'react-redux'
 import FetchCategories from './Services/FetchCategories';
 import QuizForm from './Components/QuizForm';
 import QuizCard from './Components/QuizCard';
+import Result from './Components/Result';
 
 
 
 function App() {
   const dispatch = useDispatch()
+  const formVisibility = useSelector((state: RootStateOrAny) => state.QuizFormVisibility)
+  const cardVisibility = useSelector((state: RootStateOrAny) => state.QuizCardVisibility)
+  const resultVisibility = useSelector((state: RootStateOrAny) => state.ResultVisibility)
+
+
 
   useEffect(() => {
     async function CategoriesFetch() {
@@ -20,8 +26,9 @@ function App() {
 
   return (
     <div>
-      <QuizForm />
-      <QuizCard />
+      {formVisibility && <QuizForm />}
+      {cardVisibility && <QuizCard />}
+      {resultVisibility && <Result />}
     </div>
   );
 }
