@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 const CountDownTimer: React.FC = () => {
-    const [min, setmin] = useState<number>(1)
-    const [sec, setsec] = useState<number>(0)
+    const dispatch = useDispatch()
+    const [min, setmin] = useState<number>(9)
+    const [sec, setsec] = useState<number>(59)
 
     useEffect(() => {
         let myInterval = setInterval(() => {
@@ -11,6 +13,8 @@ const CountDownTimer: React.FC = () => {
             else {
                 if (min === 0) {
                     clearInterval(myInterval)
+                    dispatch({ type: 'hide_quiz_card' })
+                    dispatch({ type: 'show_result' })
                 }
                 else {
                     setmin(prev => prev - 1)

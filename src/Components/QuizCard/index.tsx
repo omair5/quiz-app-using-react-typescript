@@ -19,8 +19,14 @@ const QuizCard: React.FC = () => {
     const [checkedValue, setcheckedValue] = useState<string>('');
     const [questionCount, setquestionCount] = useState<number>(1)
 
+
     // HANDLE NEXT QUESTION
     const HandleNext = () => {
+        // incrementing count if the user selected answer is correct
+        if (checkedValue === QuizData[questionNumber].correct_answer) {
+            dispatch({ type: 'increment_correct_answer_count' })
+        }
+
         if (questionNumber < QuizData.length - 1) {
             setquestionNumber((prev: number) => prev + 1)
             setquestionCount((prev: number) => prev + 1)
@@ -48,7 +54,7 @@ const QuizCard: React.FC = () => {
                         <div>
                             {questionCount}/10
                         </div>
-                        
+
                         {/* COUNTDOWN TIMER */}
                         <div>
                             <CountDownTimer />
