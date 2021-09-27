@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { useSelector, RootStateOrAny } from 'react-redux';
+import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
 import { QuizCardData } from '../../QuizType';
 import { decode } from 'html-entities';
 import { useState } from 'react';
@@ -8,23 +8,27 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
+import CountDownTimer from '../CountDownTimer';
 
 
 
 const QuizCard: React.FC = () => {
+    const dispatch = useDispatch()
     const QuizData: QuizCardData[] = useSelector((state: RootStateOrAny) => state.QuizData)
     const [questionNumber, setquestionNumber] = useState<number>(0)
     const [checkedValue, setcheckedValue] = useState<string>('');
+    const [questionCount, setquestionCount] = useState<number>(1)
 
     // HANDLE NEXT QUESTION
     const HandleNext = () => {
         if (questionNumber < QuizData.length - 1) {
             setquestionNumber((prev: number) => prev + 1)
+            setquestionCount((prev: number) => prev + 1)
         }
         else {
-            alert('hey')
+            dispatch({ type: 'hide_quiz_card' })
+            dispatch({ type: 'show_result' })
         }
-
     }
 
     const handleOptionChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,8 +44,22 @@ const QuizCard: React.FC = () => {
                 (QuizData.length === 0) ? 'loadinggggggg'
                     :
                     <div>
-                        {decode(QuizData[questionNumber].question)}
+                        {/* QUESTION COUNT */}
+                        <div>
+                            {questionCount}/10
+                        </div>
+                        
+                        {/* COUNTDOWN TIMER */}
+                        <div>
+                            <CountDownTimer />
+                        </div>
 
+                        {/* QUESTION */}
+                        <div>
+                            {decode(QuizData[questionNumber].question)}
+                        </div>
+
+                        {/* OPTIONS */}
                         <RadioGroup
                             value={checkedValue}
                             onChange={handleOptionChange}
