@@ -9,6 +9,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import CountDownTimer from '../CountDownTimer';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 
 
@@ -18,22 +19,30 @@ const QuizCard: React.FC = () => {
     const [questionNumber, setquestionNumber] = useState<number>(0)
     const [checkedValue, setcheckedValue] = useState<string>('');
     const [questionCount, setquestionCount] = useState<number>(1)
+    const [showError, setshowError] = useState<boolean>(false)
 
 
     // HANDLE NEXT QUESTION
     const HandleNext = () => {
-        // incrementing count if the user selected answer is correct
-        if (checkedValue === QuizData[questionNumber].correct_answer) {
-            dispatch({ type: 'increment_correct_answer_count' })
-        }
-
-        if (questionNumber < QuizData.length - 1) {
-            setquestionNumber((prev: number) => prev + 1)
-            setquestionCount((prev: number) => prev + 1)
+        if (!checkedValue) {
+            setshowError(true)
         }
         else {
-            dispatch({ type: 'hide_quiz_card' })
-            dispatch({ type: 'show_result' })
+            setshowError(false)
+            setcheckedValue('')
+            // incrementing count if the user selected answer is correct
+            if (checkedValue === QuizData[questionNumber].correct_answer) {
+                dispatch({ type: 'increment_correct_answer_count' })
+            }
+
+            if (questionNumber < QuizData.length - 1) {
+                setquestionNumber((prev: number) => prev + 1)
+                setquestionCount((prev: number) => prev + 1)
+            }
+            else {
+                dispatch({ type: 'hide_quiz_card' })
+                dispatch({ type: 'show_result' })
+            }
         }
     }
 
@@ -74,7 +83,7 @@ const QuizCard: React.FC = () => {
                                 {
                                     QuizData[questionNumber].options.map((value: string, index: number) => (
                                         <Grid item xs={12} md={6} key={index}>
-                                            <FormControlLabel value={value} control={<Radio />} label={value} />
+                                            <FormControlLabel value={decode(value)} control={<Radio />} label={decode(value)} />
                                         </Grid>
                                     ))
                                 }
@@ -90,6 +99,10 @@ const QuizCard: React.FC = () => {
                     NEXT
                 </Button>
             </div>
+            {
+                showError && <FormHelperText>Please select An Answer Before Proceed !</FormHelperText>
+            }
+
         </>
     );
 }
