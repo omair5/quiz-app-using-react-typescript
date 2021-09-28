@@ -1,4 +1,4 @@
-const initialState = 1
+const initialState = 10
 const CountDownMins = (state = initialState, action) => {
     switch (action.type) {
         case 'decrement_minute':

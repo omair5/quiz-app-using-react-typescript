@@ -1,4 +1,5 @@
 import { FetchQuizResponse, QuizCardData } from '../QuizType'
+import { decode } from 'html-entities';
 
 const ShuffleArray = (optionsArray: string[]) => {
     return optionsArray.sort(() => Math.random() - 0.5)
@@ -12,8 +13,8 @@ const FetchQuiz = async (quizCategory: number, quizDifficulty: string): Promise<
     const quizData = results.map((value: FetchQuizResponse, index: number) => (
         {
             question: value.question,
-            options: ShuffleArray(value.incorrect_answers.concat(value.correct_answer)),
-            correct_answer: value.correct_answer
+            options: ShuffleArray(value.incorrect_answers.concat(value.correct_answer)).map(value => decode(value)),
+            correct_answer: decode(value.correct_answer)
         }
     ))
     return quizData
