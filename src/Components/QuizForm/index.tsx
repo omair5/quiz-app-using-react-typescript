@@ -1,8 +1,9 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { useSelector, RootStateOrAny, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import FetchQuiz from '../../Services/FetchQuiz';
 import { QuizCardData } from '../../QuizType'
+import { Category_select_options } from '../../Services/FetchCategories'
 
 
 interface categoryItems {
@@ -24,7 +25,6 @@ const DifficultyLevel = [
 
 const QuizForm: React.FC = () => {
     const dispatch = useDispatch()
-    const Category_select_options = useSelector((state: RootStateOrAny) => state.FormCategory)
     const [formFields, setformFields] = useState({ name: '', category: 9, difficulty: 'easy' })
 
     const HandleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +56,7 @@ const QuizForm: React.FC = () => {
                         value={formFields.name}
                         name='name'
                         onChange={HandleFormChange}
+                        required
                     />
                 </div>
 
@@ -74,6 +75,7 @@ const QuizForm: React.FC = () => {
                         name='category'
                         placeholder='Enter Your Name'
                     >
+
                         {
                             Category_select_options.length === 0 ? 'Loading...' :
                                 Category_select_options.map((option: categoryItems, index: number) => (
