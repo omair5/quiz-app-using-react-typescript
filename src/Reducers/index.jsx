@@ -5,6 +5,9 @@ import QuizFormVisibility from './QuizFormVisibility'
 import QuizCardVisibility from './QuizCardVisibility'
 import ResultVisibility from './ResultVisibility'
 import CorrectAnswerCount from './CorrectAnswerCount'
+import FormData from './FormData'
+import CountDownMins from './CountDownMins'
+import CountDownSecs from './CountDownSecs'
 
 
 export default combineReducers(
@@ -14,6 +17,9 @@ export default combineReducers(
         QuizFormVisibility,
         QuizCardVisibility,
         ResultVisibility,
-        CorrectAnswerCount
+        CorrectAnswerCount,
+        FormData,
+        CountDownMins,
+        CountDownSecs
     }
 )

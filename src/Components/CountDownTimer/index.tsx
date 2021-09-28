@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 const CountDownTimer: React.FC = () => {
     const dispatch = useDispatch()
-    const [min, setmin] = useState<number>(9)
-    const [sec, setsec] = useState<number>(59)
+    const min = useSelector((state: RootStateOrAny) => state.CountDownMins)
+    const sec = useSelector((state: RootStateOrAny) => state.CountDownSecs)
 
     useEffect(() => {
         let myInterval = setInterval(() => {
             if (sec > 0) {
-                setsec(prev => prev - 1)
+                dispatch({ type: 'decrement_second' })
             }
             else {
                 if (min === 0) {
@@ -17,8 +17,9 @@ const CountDownTimer: React.FC = () => {
                     dispatch({ type: 'show_result' })
                 }
                 else {
-                    setmin(prev => prev - 1)
-                    setsec(59)
+
+                    dispatch({ type: 'decrement_minute' })
+                    dispatch({ type: 'set_seconds' })
                 }
 
             }

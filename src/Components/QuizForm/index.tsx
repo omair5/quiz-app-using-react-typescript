@@ -1,6 +1,6 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import FetchQuiz from '../../Services/FetchQuiz';
 import { QuizCardData } from '../../QuizType'
 import { Category_select_options } from '../../Services/FetchCategories'
@@ -25,10 +25,10 @@ const DifficultyLevel = [
 
 const QuizForm: React.FC = () => {
     const dispatch = useDispatch()
-    const [formFields, setformFields] = useState({ name: '', category: 9, difficulty: 'easy' })
+    const formFields = useSelector((state: RootStateOrAny) => state.FormData)
 
     const HandleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setformFields({ ...formFields, [e.target.name]: e.target.value })
+        dispatch({ type: 'set_form_data', payload: { [e.target.name]: e.target.value } })
     }
 
     const HandleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -41,7 +41,6 @@ const QuizForm: React.FC = () => {
             dispatch({ type: 'set_quiz', payload: quizdata })
         }
         QuizFetch()
-        setformFields({ name: '', category: 9, difficulty: 'easy' })
     }
 
     return (
