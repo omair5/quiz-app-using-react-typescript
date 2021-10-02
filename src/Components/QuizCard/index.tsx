@@ -10,7 +10,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import CountDownTimer from '../CountDownTimer';
 import FormHelperText from '@material-ui/core/FormHelperText';
-
+import Styles from './index.module.css'
+import Paper from '@material-ui/core/Paper';
+import CardSkeleton from '../CardSkeleton';
 
 
 const QuizCard: React.FC = () => {
@@ -50,27 +52,26 @@ const QuizCard: React.FC = () => {
         setcheckedValue(e.target.value);
     };
 
-
-    console.log('this is quiz data', QuizData)
-
     return (
         <>
             {
-                (QuizData.length === 0) ? 'loadinggggggg'
+                (QuizData.length === 0) ? <CardSkeleton />
                     :
-                    <div>
+                    <Paper className={Styles.paper}>
                         {/* QUESTION COUNT */}
-                        <div>
-                            {questionCount}/10
-                        </div>
+                        <div className={Styles.header}>
+                            <div className={Styles.count}>
+                                Question {questionCount}/10
+                            </div>
 
-                        {/* COUNTDOWN TIMER */}
-                        <div>
-                            <CountDownTimer />
+                            {/* COUNTDOWN TIMER */}
+                            <div className={Styles.timer}>
+                                <CountDownTimer />
+                            </div>
                         </div>
 
                         {/* QUESTION */}
-                        <div>
+                        <div className={Styles.question}>
                             {decode(QuizData[questionNumber].question)}
                         </div>
 
@@ -78,6 +79,7 @@ const QuizCard: React.FC = () => {
                         <RadioGroup
                             value={checkedValue}
                             onChange={handleOptionChange}
+
                         >
                             <Grid container spacing={3}>
                                 {
@@ -90,29 +92,18 @@ const QuizCard: React.FC = () => {
                             </Grid>
                         </RadioGroup>
 
-                    </div>
+                        {/* NEXT BUTTON */}
+                        <div className={Styles.button}>
+                            <Button variant="contained" color="primary" onClick={HandleNext}>
+                                NEXT
+                            </Button>
+                        </div>
+                        {
+                            showError && <FormHelperText className={Styles.error}>Please select An Option Before Proceed !</FormHelperText>
+                        }
+                    </Paper>
             }
-
-            {/* NEXT BUTTON */}
-            <div>
-                <Button variant="contained" color="primary" onClick={HandleNext}>
-                    NEXT
-                </Button>
-            </div>
-            {
-                showError && <FormHelperText>Please select An Answer Before Proceed !</FormHelperText>
-            }
-
         </>
     );
 }
-
 export default React.memo(QuizCard);
-
-
-
-
-
-
-
-

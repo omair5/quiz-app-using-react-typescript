@@ -1,0 +1,39 @@
+.button {
+  text-align: center;
+  margin: 15px 0px;
+}
+
+.button Button {
+  background-color: #fcb812;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.paper {
+  background-color: #566bf3 !important;
+  padding: 1.5rem;
+  max-width: 450px;
+}
+
+.textfieldHeading {
+  color: white;
+  font-weight: 900;
+  letter-spacing: 1.1px;
+}
+
+.note {
+  color: #fcb812;
+}
+
+.option {
+  color: white;
+  background-color: #566bf3 !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .paper {
+    margin: 20px auto;
+  }
+}
+/*# sourceMappingURL=index.module.css.map */

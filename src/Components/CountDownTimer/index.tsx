@@ -37,7 +37,7 @@ const CountDownTimer: React.FC = () => {
 
     return (
         <>
-            {`${min}:${LeadingZeros(sec)}`}
+            Timer : {`${min}:${LeadingZeros(sec)}`}
         </>
     );
 }

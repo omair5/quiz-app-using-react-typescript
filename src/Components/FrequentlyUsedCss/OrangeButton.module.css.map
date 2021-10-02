@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,QAAQ;CAOnB;;AATD,AAGI,OAHG,CAGH,MAAM,CAAC;EACH,gBAAgB,EAAE,OAAO;EACzB,OAAO,EAAE,SAAS;EAClB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "OrangeButton.module.scss"
+    ],
+    "names": [],
+    "file": "OrangeButton.module.css"
+}

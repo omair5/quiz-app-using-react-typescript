@@ -1,0 +1,66 @@
+.button {
+  text-align: center;
+  margin: 15px 0px;
+}
+
+.button Button {
+  background-color: #fcb812;
+  min-width: 60px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.paper {
+  background-color: #566bf3 !important;
+  padding: 1.5rem;
+  height: auto;
+  width: 850px;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.header .count {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  color: #fcb812;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.header .timer {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  color: #fcb812;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.question {
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.error {
+  color: #383838 !important;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 992px) {
+  .paper {
+    width: 95%;
+    margin: 20px auto;
+  }
+}
+/*# sourceMappingURL=index.module.css.map */

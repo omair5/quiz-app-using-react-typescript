@@ -1,0 +1,21 @@
+@import "../FrequentlyUsedCss/HorizontalAndVerticalCeneter.module.scss";
+.paper {
+    background-color: rgb(86, 107, 243) !important;
+    padding: 1.5rem;
+    height: 400px;
+    width: 850px;
+    @include HorizontalAndVerticalCenter;
+}
+
+@media only screen and (max-width: 992px) {
+    .paper {
+        width: 650px;
+        margin: 20px auto;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .paper {
+        width: 400px;
+        margin: 20px auto;
+    }
+}

@@ -1,0 +1,41 @@
+@import "../FrequentlyUsedCss/OrangeButton.module.scss";
+
+.paper {
+    background-color: rgb(86, 107, 243) !important;
+    padding: 1.5rem;
+    height: auto;
+    width: 850px;
+}
+.header {
+    display: flex;
+    margin-bottom: 15px;
+    .count {
+        flex-basis: 50%;
+        color: #fcb812;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .timer {
+        flex-basis: 50%;
+        display: flex;
+        justify-content: flex-end;
+        color: #fcb812;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+}
+.question {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+.error {
+    color: rgb(56, 56, 56) !important;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 992px) {
+    .paper {
+        width: 95%;
+        margin: 20px auto;
+    }
+}

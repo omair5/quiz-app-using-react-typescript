@@ -1,0 +1,87 @@
+.button {
+  text-align: center;
+  margin: 15px 0px;
+}
+
+.button Button {
+  background-color: #fcb812;
+  min-width: 60px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.paper {
+  background-color: #566bf3 !important;
+  padding: 1.5rem;
+  min-height: 400px;
+  margin: 20px;
+  max-width: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.paper h1 span {
+  color: #383738;
+}
+
+.paperAnswers {
+  max-width: 500px;
+  background-color: #566bf3 !important;
+  padding: 1.5rem;
+  min-height: 500px;
+  margin: 20px;
+  margin-bottom: 20px;
+}
+
+.paperAnswers h1 {
+  text-align: center;
+  color: #383738;
+}
+
+.Badge {
+  text-align: center;
+  margin: 15px auto;
+}
+
+.Badge img {
+  height: 100px;
+}
+
+.result h2 {
+  color: #fcb812;
+  text-transform: capitalize;
+  padding: 5px 0px;
+}
+
+.qacontainer {
+  margin: 7px 0px;
+}
+
+.qacontainer .Answer {
+  color: #fcb812;
+  font-weight: bolder;
+}
+
+@media only screen and (max-width: 950px) {
+  .paper {
+    margin: auto;
+    max-width: 90%;
+  }
+  .paperAnswers {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+}
+/*# sourceMappingURL=index.module.css.map */

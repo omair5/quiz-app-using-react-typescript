@@ -4,7 +4,7 @@ const CountDownMins = (state = initialState, action) => {
         case 'decrement_minute':
             return state - 1
         case 'clear_minute':
-            return 0
+            return 10
         default:
             return state
     }

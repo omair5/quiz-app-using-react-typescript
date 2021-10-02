@@ -1,0 +1,52 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+}
+
+.bg {
+  background-image: url("./background.jpg");
+  background-repeat: none;
+  background-size: 100% 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainHeadings {
+  margin: 20px auto;
+}
+
+.mainHeadings h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  color: #fcb812;
+}
+
+.mainHeadings h2 {
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+@media only screen and (max-width: 992px) {
+  html {
+    font-size: 72.5%;
+  }
+}
+/*# sourceMappingURL=App.module.css.map */

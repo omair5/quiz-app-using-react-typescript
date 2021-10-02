@@ -1,0 +1,24 @@
+@import "../FrequentlyUsedCss/OrangeButton.module.scss";
+
+.paper {
+    background-color: rgb(86, 107, 243) !important;
+    padding: 1.5rem;
+    max-width: 450px;
+}
+.textfieldHeading {
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+}
+.note {
+    color: #fcb812;
+}
+.option {
+    color: white;
+    background-color: rgb(86, 107, 243) !important;
+}
+@media only screen and (max-width: 992px) {
+    .paper {
+        margin: 20px auto;
+    }
+}
